@@ -1,0 +1,131 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+main {
+  flex: 1; /* pushes footer to the bottom */
+}
+
+/* Base styles */
+.intro-section {
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.intro-section h1 {
+  font-size: 2.5rem;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+/* Inner content: image + text */
+.intro-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap; /* ensures wrapping on narrow screens */
+}
+
+/* Image styling */
+.intro-content img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  border: 3px solid #000;
+  background-color: #f8f1ee;
+  box-shadow: 5px 5px 0 #000;
+}
+
+/* Paragraph styling */
+.intro-content p {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #000;
+  text-align: justify;
+  min-width: 250px;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 1rem;
+  color: #000;
+  border-top: 2px solid #000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ===============================
+   RESPONSIVE BEHAVIOR
+   =============================== */
+
+/* Tablets (≤900px) */
+@media (max-width: 900px) {
+  .intro-section h1 {
+    font-size: 2rem;
+  }
+
+  .intro-content {
+    gap: 1.5rem;
+  }
+
+  .intro-content img {
+    width: 250px;
+  }
+
+  .intro-content p {
+    font-size: 1rem;
+  }
+
+  footer {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}
+
+/* Phones (≤600px) */
+@media (max-width: 600px) {
+  .intro-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-content img {
+    width: 80%;
+    max-width: 250px;
+  }
+
+  .intro-content p {
+    text-align: justify;
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .intro-section h1 {
+    font-size: 1.8rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
