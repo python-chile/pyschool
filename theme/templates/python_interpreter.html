@@ -1,0 +1,117 @@
+<link
+        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+        rel="stylesheet"
+        xmlns:is="http://www.w3.org/1999/xhtml"/>
+
+<section id="prueba-python" class="interpreter-section">
+    <div class="container">
+        <h2>Prueba Python Ahora Mismo</h2>
+        <p>¡Escribe y ejecuta código Python directamente en tu navegador!</p>
+
+        <div class="interpreter-container">
+            <div class="controls">
+                <button id="run-btn" class="run-button" disabled>Cargando...</button>
+                <div class="examples">
+                    <button
+                        class="example-btn"
+                        data-code="print('Hola Mundo desde PySchool!')"
+                        >Hola Mundo</button>
+                    <button
+                        class="example-btn"
+                        data-code="for i in range(5):
+    print(f'Contando: {i}')">Bucle</button>
+                    <button
+                        class="example-btn"
+                        data-code="a = 10
+b = 20
+print(f'La suma de {a} + {b} es {a+b}')">Matemáticas</button>
+                </div>
+            </div>
+
+            <div class="editor-layout">
+                <div class="editor-container">
+                    <div id="editor" class="language-python">
+print('Hola Mundo desde PySchool!')
+                    </div>
+                </div>
+                <div id="output" class="output-console">Resultado...</div>
+            </div>
+            <div id="status-msg" class="status-msg">
+                Iniciando motor Python...
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" is:inline></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" is:inline></script>
+
+<script type="module" is:inline>
+    import { CodeJar } from "https://medv.io/codejar/codejar.js";
+
+    let pyodide = null;
+    const outputElement = document.getElementById("output");
+    const runButton = document.getElementById("run-btn");
+    const statusMsg = document.getElementById("status-msg");
+    const editorElement = document.getElementById("editor");
+
+    const highlight = (editor) => {
+        if (window.Prism) {
+            window.Prism.highlightElement(editor);
+        }
+    };
+
+    const jar = CodeJar(editorElement, highlight);
+
+    highlight(editorElement);
+
+    async function initPyodide() {
+        if (!window.loadPyodide) {
+            const script = document.createElement("script");
+            script.src =
+                "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js";
+            document.body.appendChild(script);
+            await new Promise((resolve) => (script.onload = resolve));
+        }
+
+        try {
+            pyodide = await loadPyodide();
+            statusMsg.innerText = "Python listo!";
+            statusMsg.classList.add("ready");
+            runButton.innerText = "Ejecutar ▶";
+            runButton.disabled = false;
+        } catch (err) {
+            statusMsg.innerText = "Error cargando Python";
+            console.error(err);
+        }
+    }
+
+    initPyodide();
+
+    runButton.addEventListener("click", async () => {
+        if (!pyodide) return;
+
+        const code = jar.toString();
+        outputElement.innerText = "Ejecutando...";
+
+        try {
+            pyodide.setStdout({
+                batched: (msg) => {
+                    outputElement.innerText += "\n" + msg;
+                },
+            });
+
+            outputElement.innerText = "";
+            await pyodide.runPythonAsync(code);
+        } catch (err) {
+            outputElement.innerText = "Error:\n" + err;
+        }
+    });
+
+    document.querySelectorAll(".example-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const code = e.target.getAttribute("data-code");
+            jar.updateCode(code);
+        });
+    });
+</script>

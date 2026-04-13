@@ -8,11 +8,12 @@
 
 </head>
 <body>
+    {% include 'navbar.html' %}
     <main>
-        {% block content %}{% endblock %}
+        {% include 'welcome.html' %}
+        {% include 'python_interpreter.html'%}
+        {% include 'projects.html' %}
     </main>
-
     {% include 'footer.html' %}
-
 </body>
 </html>
