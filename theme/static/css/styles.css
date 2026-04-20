@@ -1,10 +1,8 @@
 :root {
     --color-white: #ffffff;
     --color-black: #000000;
-    --color-green: #2fa84f; /* Python Green-ish */
-    --font-family:
-        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    --color-green: #2fa84f;
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 html {
@@ -16,118 +14,73 @@ body {
     padding: 0;
     font-family: var(--font-family);
     background-color: var(--color-white);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 2px, transparent 2px);
+    background-size: 30px 30px;
     color: var(--color-black);
 }
 
-/* Hero Section */
-main {
+/* =========================================
+   LAYOUT UTILITIES & STRUCTURE
+   ========================================= */
+main,
+.nav-content,
+.footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-.hero {
-    padding: 4rem 0;
-}
-
-.hero-logo {
-    width: 200px;
-    height: auto;
-    margin-bottom: 2rem;
-}
-
-h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-black);
-}
-
-.subtitle {
-    font-size: 1.5rem;
-    color: #666;
-}
-
-.pch-logo {
-    width: 200px;
-    height: auto;
-    margin-bottom: 2rem;
-}
-
-/* Interpreter Style */
-
- .interpreter-section {
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
 }
 
 .container {
     max-width: 1000px;
     margin: 0 auto;
+    width: 100%;
 }
 
-h2 {
-    color: var(--color-black, #333);
-    margin-bottom: 0.5rem;
-}
-
-.interpreter-container {
-    margin-top: 1.5rem;
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.controls {
+.controls,
+.nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.examples,
+.logo-container,
+.contact-info,
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.logo-container {
+    gap: 0.5rem;
+}
+
+.examples {
+    gap: 0.5rem;
+}
+
+.contact-info {
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.controls {
     margin-bottom: 1rem;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
-.run-button {
-    background-color: #2fa84f;
-    color: white;
-    border: none;
-    padding: 0.5rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background 0.2s;
+.project-links,
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.run-button:hover:not(:disabled) {
-    background-color: #24823d;
-}
-
-.run-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.examples {
+.project-links {
     display: flex;
-    gap: 0.5rem;
-}
-
-.example-btn {
-    background: #e9ecef;
-    border: none;
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    color: #495057;
-}
-
-.example-btn:hover {
-    background: #dde2e6;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .editor-layout {
@@ -135,15 +88,297 @@ h2 {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     height: 350px;
+    margin-top: 1rem;
+    color: #fff !important;
 }
 
-/* Editor Specific Styles */
 .editor-container {
-    border-radius: 4px;
+    height: 100%;
     overflow: hidden;
-    background-color: #2d2d2d;
-    border: 1px solid #333;
-    text-align: left;
+}
+
+/* =========================================
+   BRUTALIST TYPOGRAPHY
+   ========================================= */
+.logo,
+section h1,
+.run-button,
+.status-msg,
+.project-links a,
+.contact-info p {
+    text-transform: uppercase;
+}
+
+.nav-links a,
+.hero .subtitle,
+.example-btn,
+#recursos p {
+    text-transform: uppercase;
+}
+
+.logo {
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.hero .subtitle {
+    font-size: 1.8rem !important;
+}
+
+#recursos p {
+    font-size: 1.5rem;
+}
+
+.project-links a {
+    font-size: 1.8rem !important;
+}
+
+/* =========================================
+   BRUTALIST COLORS & BACKGROUNDS
+   ========================================= */
+nav,
+.logo-container,
+.nav-links a,
+.hero,
+.hero .hero-logo,
+.hero .pch-logo,
+.interpreter-section,
+.run-button:not(:disabled):hover,
+.example-btn,
+.status-msg,
+#recursos.section,
+#recursos p,
+.project-links a,
+.contact-info a {
+    background-color: var(--color-white, #fff) !important;
+    color: var(--color-black, #000) !important;
+}
+
+.run-button {
+    background-color: var(--color-green, #2fa84f) !important;
+    color: var(--color-black, #000) !important;
+}
+
+.status-msg.ready {
+    background-color: var(--color-green, #2fa84f) !important;
+    color: var(--color-white, #fff) !important;
+}
+
+/* =========================================
+   BRUTALIST BORDERS
+   ========================================= */
+.logo-container,
+.nav-links a,
+.example-btn,
+.status-msg {
+    border: 1px solid var(--color-black, #000) !important;
+    border-radius: 50px !important;
+}
+
+nav {
+    border-bottom: 2px solid var(--color-black, #000) !important;
+}
+
+.hero .hero-logo,
+.hero .pch-logo,
+.run-button,
+.editor-container,
+.output-console,
+.project-links a,
+.contact-info a {
+    border: 1px solid var(--color-black, #000) !important;
+    border-radius: 6px !important;
+}
+
+section h1 {
+    color: var(--color-black, #000);
+    letter-spacing: -1px;
+    font-size: 3rem !important;
+    line-height: 1;
+    text-shadow: 4px 4px 0 var(--color-green, #2fa84f);
+    margin-bottom: 2rem !important;
+    border-bottom: 1px solid var(--color-black, #000);
+    padding-bottom: 1rem;
+
+}
+
+/* Main sections are now uniform bordered squares */
+.hero,
+.interpreter-section,
+#recursos.section {
+    border: 2px solid var(--color-black, #000) !important;
+    border-radius: 50px !important;
+}
+
+
+
+/* =========================================
+   BRUTALIST SHADOWS & TRANSITIONS
+   ========================================= */
+.logo-container,
+.nav-links a,
+.hero .hero-logo,
+.hero .pch-logo,
+.run-button,
+.example-btn,
+.project-links a,
+.contact-info a {
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.1s, border-color 0.1s !important;
+    text-decoration: none;
+}
+
+.logo-container,
+.nav-links a,
+.example-btn,
+.status-msg {
+    box-shadow: 4px 4px 0 var(--color-black, #000) !important;
+}
+
+.run-button,
+.contact-info a {
+    box-shadow: 6px 6px 0 var(--color-black, #000) !important;
+}
+
+.hero .hero-logo,
+.hero .pch-logo,
+.project-links a {
+    box-shadow: 8px 8px 0 var(--color-black, #000) !important;
+}
+
+/* Main sections get uniform shadow */
+.hero,
+.interpreter-section,
+#recursos.section {
+    box-shadow: 16px 16px 0 var(--color-green, #2fa84f) !important;
+}
+
+.logo-container:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-green, #2fa84f) !important;
+}
+
+.nav-links a:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-green, #2fa84f) !important;
+}
+
+.example-btn:hover {
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 6px 6px 0 var(--color-green, #2fa84f) !important;
+}
+
+.run-button:not(:disabled):hover {
+    transform: translate(-3px, -3px) !important;
+    box-shadow: 9px 9px 0 var(--color-black, #000) !important;
+}
+
+.contact-info a:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--color-green, #2fa84f) !important;
+    border-color: var(--color-green, #2fa84f) !important;
+}
+
+.hero .hero-logo:hover,
+.hero .pch-logo:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 var(--color-black, #000) !important;
+}
+
+.project-links a:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 12px 12px 0 var(--color-green, #2fa84f) !important;
+}
+
+/* =========================================
+   UNIFORM SQUARED SECTIONS
+   ========================================= */
+.hero,
+.interpreter-section,
+#recursos.section {
+    margin: 4rem auto !important;
+    padding: 2rem !important;
+    max-width: 1000px;
+    width: 95%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Ensure containers inside take full width of the square */
+.hero>*,
+.interpreter-section .container,
+#recursos.section .container {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   SPECIFIC COMPONENT STYLES
+   ========================================= */
+
+
+.hero .hero-logo,
+.hero .pch-logo {
+    max-width: 200px;
+    height: auto;
+    padding: 1rem;
+    margin-bottom: 2.5rem !important;
+}
+
+.hero .subtitle {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 2.5rem !important;
+}
+
+nav {
+    padding: 1rem 2rem;
+}
+
+.nav-content {
+    padding: 0.5rem 0;
+}
+
+.logo-container {
+    padding: 0.5rem 1rem;
+}
+
+.nav-logo-img {
+    width: 40px;
+    height: auto;
+}
+
+.nav-links a {
+    padding: 0.5rem 1rem;
+    display: block;
+}
+
+.interpreter-container {
+    margin-top: 2rem !important;
+    width: 100%;
+}
+
+.run-button {
+    padding: 0.75rem 2rem !important;
+    cursor: pointer;
+}
+
+.example-btn {
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+}
+
+.status-msg {
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    margin-top: 2rem !important;
 }
 
 #editor {
@@ -153,184 +388,148 @@ h2 {
     font-size: 14px;
     padding: 1rem;
     box-sizing: border-box;
-    color: #f8f8f2;
+    background-color: transparent;
+    border: none;
     overflow-y: auto;
     resize: none;
     outline: none;
+    color: var(--color-white, #fff) !important;
 }
+
 
 .output-console {
     width: 100%;
     height: 100%;
     padding: 1rem;
-    background-color: #f1f3f5;
-    color: #333;
+    box-sizing: border-box;
     font-family: "Consolas", "Monaco", monospace;
     font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
     white-space: pre-wrap;
     overflow-y: auto;
-    box-sizing: border-box;
-    text-align: left;
 }
 
-.status-msg {
+.output-console,
+.editor-container {
+    text-align: left !important;
+    background-color: var(--color-black, #000) !important;
+}
+
+
+#recursos p {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+}
+
+.project-links a {
+    padding: 1.5rem 2rem !important;
+    display: block;
+    position: relative;
+}
+
+.project-links a::after {
+    content: '→';
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    color: var(--color-green, #2fa84f);
+    transition: transform 0.2s;
+}
+
+.project-links a:hover::after {
+    transform: translate(10px, -50%);
+}
+
+footer#contacto {
+    padding: 4rem 2rem !important;
+    margin-top: 4rem !important;
+    border-top: 2px solid var(--color-black, #000) !important;
+}
+
+.footer-content {
+    gap: 2rem;
+}
+
+.contact-info p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-info a {
+    padding: 0.5rem 1rem;
     margin-top: 0.5rem;
-    color: #666;
-    font-style: italic;
-    font-size: 0.9rem;
 }
 
-.status-msg.ready {
-    color: #2fa84f;
-}
-
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
 @media (max-width: 768px) {
+
+    .hero,
+    .interpreter-section,
+    #recursos.section {
+        aspect-ratio: auto;
+        min-height: 80vh;
+        padding: 3rem 1rem !important;
+    }
+
+    .hero h1 {
+        font-size: 3rem !important;
+    }
+
+    .hero .subtitle {
+        font-size: 1.2rem !important;
+    }
+
+    .interpreter-section h1 {
+        font-size: 2.5rem !important;
+    }
+
+    .run-button {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .examples {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .example-btn {
+        width: 100%;
+    }
+
     .editor-layout {
         grid-template-columns: 1fr;
         height: auto;
     }
+
     .editor-container,
     .output-console {
         height: 250px;
     }
-}
 
-/* Projects Style */
-.section {
-    padding: 4rem 2rem;
-    border-top: 1px solid #eee;
-}
+    #recursos h2 {
+        font-size: 2.5rem !important;
+    }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+    #recursos p {
+        font-size: 1.2rem;
+    }
 
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--color-black);
-}
+    .project-links a {
+        font-size: 1.4rem !important;
+        padding: 1rem 1.5rem !important;
+    }
 
-.project-links {
-    padding: 0;
-    text-align: left;
-    margin-left: 10%;
-}
+    .project-links a::after {
+        display: none;
+    }
 
-.project-links li {
-    margin-bottom: 1rem;
-}
-
-.project-links a {
-    text-decoration: none;
-    color: var(--color-black);
-    border-bottom: 2px solid var(--color-green);
-    padding-bottom: 0.2rem;
-    transition: all 0.2s ease;
-    font-size: 1.2rem;
-}
-
-.project-links a:hover {
-    background-color: var(--color-green);
-    color: var(--color-white);
-}
-
-/* navbar style */
-nav {
-    padding: 1rem 2rem;
-    border-bottom: 1px solid #eee;
-}
-
-.nav-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-}
-
-.nav-logo-img {
-    width: 40px;
-    height: auto;
-}
-
-.logo {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: var(--color-green);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--color-black);
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.nav-links a:hover {
-    color: var(--color-green);
-}
-
-/* footer style */
-
-footer {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    padding: 3rem 2rem;
-    margin-top: 4rem;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    text-align: center;
-}
-
-.contact-info {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.contact-info p {
-    margin: 0;
-}
-
-.contact-info a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.contact-info a:hover {
-    color: var(--color-green, #2fa84f);
-}
-
-.copyright {
-    margin: 0;
-    font-size: 0.9rem;
-    opacity: 0.8;
+    .contact-info {
+        flex-direction: column;
+        gap: 2rem;
+    }
 }

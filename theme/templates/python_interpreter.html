@@ -1,28 +1,19 @@
-<link
-        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
-        rel="stylesheet"
-        xmlns:is="http://www.w3.org/1999/xhtml"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"
+    xmlns:is="http://www.w3.org/1999/xhtml" />
 
 <section id="prueba-python" class="interpreter-section">
     <div class="container">
-        <h2>Prueba Python Ahora Mismo</h2>
+        <h1>Prueba Python Ahora Mismo</h1>
         <p>¡Escribe y ejecuta código Python directamente en tu navegador!</p>
 
         <div class="interpreter-container">
             <div class="controls">
                 <button id="run-btn" class="run-button" disabled>Cargando...</button>
                 <div class="examples">
-                    <button
-                        class="example-btn"
-                        data-code="print('Hola Mundo desde PySchool!')"
-                        >Hola Mundo</button>
-                    <button
-                        class="example-btn"
-                        data-code="for i in range(5):
+                    <button class="example-btn" data-code="print('Hola Mundo desde PySchool!')">Hola Mundo</button>
+                    <button class="example-btn" data-code="for i in range(5):
     print(f'Contando: {i}')">Bucle</button>
-                    <button
-                        class="example-btn"
-                        data-code="a = 10
+                    <button class="example-btn" data-code="a = 10
 b = 20
 print(f'La suma de {a} + {b} es {a+b}')">Matemáticas</button>
                 </div>
@@ -30,9 +21,7 @@ print(f'La suma de {a} + {b} es {a+b}')">Matemáticas</button>
 
             <div class="editor-layout">
                 <div class="editor-container">
-                    <div id="editor" class="language-python">
-print('Hola Mundo desde PySchool!')
-                    </div>
+                    <div id="editor" class="language-python">print('Hola Mundo desde PySchool!')</div>
                 </div>
                 <div id="output" class="output-console">Resultado...</div>
             </div>
@@ -97,7 +86,7 @@ print('Hola Mundo desde PySchool!')
         try {
             pyodide.setStdout({
                 batched: (msg) => {
-                    outputElement.innerText += "\n" + msg;
+                    outputElement.innerText += msg;
                 },
             });
 
