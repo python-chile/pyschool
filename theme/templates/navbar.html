@@ -2,9 +2,14 @@
     <div class="nav-content">
         <a href="/" class="logo-container">
             <img src="{{ SITEURL }}/img/pyschool_logo.png" class="nav-logo-img" />
-            <div class="logo">Pyschool</div>
+            <div class="logo">PySchool</div>
         </a>
-        <ul class="nav-links">
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#iniciativa">Iniciativa</a></li>
             <li><a href="#prueba-python">Prueba Python</a></li>
             <li><a href="#recursos">Proyectos</a></li>
@@ -12,3 +17,25 @@
         </ul>
     </div>
 </nav>
+
+<script>
+    (function () {
+        const btn = document.getElementById('nav-hamburger');
+        const links = document.getElementById('nav-links');
+
+        btn.addEventListener('click', function () {
+            const isOpen = links.classList.toggle('nav-open');
+            btn.setAttribute('aria-expanded', isOpen);
+            btn.classList.toggle('is-active', isOpen);
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        links.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                links.classList.remove('nav-open');
+                btn.setAttribute('aria-expanded', false);
+                btn.classList.remove('is-active');
+            });
+        });
+    })();
+</script>
